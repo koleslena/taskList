@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body class="lift:content_id=main">
+<div id="main"
+     class="lift:surround?with=default;at=content" >
+    <h2>List TODO</h2>
+
+    <div class="lift:ListTasks">
+        <div id="tlist">
+            <table>
+                <tbody>
+                <tr>
+                    <td name="task_name"></td>
+                    <td name="task_text"></td>
+                    <td name="task_date"></td>
+                    <td name="task_del"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        Name: <input name="name"><br/>
+        Text: <input name="text"><br/>
+        Date to(dd.mm.yyyy): <span class="lift:Msg?id=date&errorClass=error">error</span><input name="date"><br/>
+        <button name="add_task" >add task</button>
+
+    </div>
+</div>
+
+</body>
+</html>

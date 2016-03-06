@@ -1,0 +1,5 @@
+.idea/*
+.gitingnore
+target/*
+*/target/*
+*/project/*
