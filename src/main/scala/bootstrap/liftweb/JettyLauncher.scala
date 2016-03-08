@@ -19,10 +19,10 @@ object JettyLancher extends App with Loggable{
 
     logger.info(s"port number is $port")
 
-    val webappDir: String = Option(this.getClass.getClassLoader.getResource("webapp"))
+/*    val webappDir: String = Option(this.getClass.getClassLoader.getResource("webapp"))
       .map(_.toExternalForm)
       .filter(_.contains("jar:file:")) // this is a hack to distinguish in-jar mode from "expanded"
-      .getOrElse("./target/webapp")
+      .getOrElse("./target/webapp")*/
 
     logger.info(s"webappDir: $webappDir")
 
