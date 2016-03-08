@@ -30,7 +30,7 @@ libraryDependencies ++= {
     "org.eclipse.jetty" % "jetty-webapp"        % "8.1.14.v20131031"  % "container,test,compile",
     "javax.servlet"     % "javax.servlet-api"   % "3.1.0" % "container,test",
     "ch.qos.logback"    % "logback-classic"     % "1.0.6",
-    "org.specs2"        %% "specs2"             % "1.14"             % "test",
+    "org.specs2"        %% "specs2"             % "1.14"             % "test"
   )
 }
 
