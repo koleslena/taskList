@@ -15,7 +15,6 @@ import net.liftweb.common.Logger
 
 class Boot extends Logger {
   def boot {
-    println("boot!")
     // where to search snippet
     LiftRules.addToPackages("code")
 
@@ -44,10 +43,9 @@ class Boot extends Logger {
 
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
-    LiftRules.jsArtifacts = JQueryArtifacts
-    JQueryModule.InitParam.JQuery = JQueryModule.JQuery191
-    JQueryModule.init()
-
+    // Use HTML5 for rendering
+    LiftRules.htmlProperties.default.set((r: Req) =>
+      new Html5Properties(r.userAgent))
   }
 
 }
