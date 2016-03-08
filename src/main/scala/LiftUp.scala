@@ -3,7 +3,7 @@ import org.eclipse.jetty.server.nio.SelectChannelConnector
 import org.eclipse.jetty.server.{Handler, Server}
 import org.eclipse.jetty.webapp.WebAppContext
 
-object JettyLauncher extends App {
+object LiftUp extends App{
   val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
 
   val server = new Server
@@ -22,4 +22,5 @@ object JettyLauncher extends App {
 
   server.start()
   server.join()
+
 }
