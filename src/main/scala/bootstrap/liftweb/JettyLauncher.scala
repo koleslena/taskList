@@ -1,24 +1,38 @@
 package bootstrap.liftweb
 
+
+import net.liftweb.common.Loggable
+import net.liftweb.util.Props
 import org.eclipse.jetty.server.Server
-import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
-import org.eclipse.jetty.server.nio.SelectChannelConnector
-import net.liftweb.http.LiftFilter
+import org.eclipse.jetty.webapp.WebAppContext
 
-object JettyLauncher {
-  def main(args: Array[String]) {
-    val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
-    val server = new Server
-    val scc = new SelectChannelConnector
-    scc.setPort(port)
-    server.setConnectors(Array(scc))
+import scala.util.Properties
 
-    val context = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS)
-    context.addServlet(classOf[DefaultServlet], "/");
-    //context.addFilter(classOf[LiftFilter], "/*", 0)
-    context.setResourceBase("src/main/webapp")
 
-    server.start
-    server.join
+object JettyLancher extends App with Loggable{
+
+  def startLift(): Unit = {
+    logger.info("starting Lift server")
+
+    val port = System.getProperty(
+      "jetty.port", Properties.envOrElse("PORT", "5432")).toInt
+
+    logger.info(s"port number is $port")
+
+    val webappDir: String = Option(this.getClass.getClassLoader.getResource("webapp"))
+      .map(_.toExternalForm)
+      .filter(_.contains("jar:file:")) // this is a hack to distinguish in-jar mode from "expanded"
+      .getOrElse("./target/webapp")
+
+    logger.info(s"webappDir: $webappDir")
+
+    val server = new Server(port)
+    val context = new WebAppContext(webappDir, Props.get("jetty.contextPath").openOr("/"))
+    server.setHandler(context)
+    server.start()
+    logger.info(s"Lift server started on port $port")
+    server.join()
   }
+
+  startLift()
 }
