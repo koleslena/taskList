@@ -10,6 +10,8 @@ resolvers ++= Seq("snapshots"     at "https://oss.sonatype.org/content/repositor
 
 seq(webSettings :_*)
 
+seq(com.typesafe.sbt.SbtStartScript.startScriptForClassesSettings: _*)
+
 unmanagedResourceDirectories in Test <+= (baseDirectory) { _ / "src/main/webapp" }
 
 scalacOptions ++= Seq("-deprecation", "-unchecked")

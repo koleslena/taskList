@@ -1,6 +1,6 @@
 resolvers += Classpaths.typesafeReleases
 
-addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.3")
+addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "0.10.0")
 
 //Enable the sbt web plugin
 addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.7.0")
