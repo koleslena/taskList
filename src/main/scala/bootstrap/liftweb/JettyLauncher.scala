@@ -27,7 +27,7 @@ object JettyLancher extends App with Loggable{
     logger.info(s"webappDir: $webappDir")
 
     val server = new Server(port)
-    val context = new WebAppContext(webappDir, Props.get("jetty.contextPath").openOr("/"))
+    val context = new WebAppContext("src/webapp", Props.get("jetty.contextPath").openOr("/"))
     server.setHandler(context)
     server.start()
     logger.info(s"Lift server started on port $port")
