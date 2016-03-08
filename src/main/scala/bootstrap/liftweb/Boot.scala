@@ -28,10 +28,11 @@ class Boot extends Logger {
 
     val entries = List(
       Menu.i("Home") / "index",
-      Menu.i("My") / "my" / "todo" >> canManage_?,
+      Menu.i("Tasks") / "my" / "todo" >> canManage_? //,
 
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"),
-        "Static Content")))
+     // Menu(Loc("Static", Link(List("static"), true, "/static/index"),
+      //  "Static Content"))
+    )
 
     LiftRules.setSiteMap(SiteMap(entries: _*))
 
